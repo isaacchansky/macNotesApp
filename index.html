@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello!</title>
+	</head>
+	<body>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-size: 18px;
+        font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
+      }
+      #markdown,
+      #output {
+        width: 50%;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        padding: 1em;
+        border: none;
+      }
+
+      #markdown {
+        left: 0;
+        background: #333;
+        color: #fefefe;
+        font-size: 24px;
+        font-family: monospace;
+
+      }
+      #output {
+        right: 0;
+      }
+    </style>
+
+    <textarea name="" id="markdown" placeholder="Start typing markdown stuff"></textarea>
+    <section id="output"></section>
+
+    <script>
+      var md = require("markdown").markdown;
+
+      document.querySelector('#markdown').addEventListener('keydown', function(e){
+
+        document.querySelector('#output').innerHTML = md.toHTML(e.currentTarget.value);
+      })
+    </script>
+	</body>
+</html>
